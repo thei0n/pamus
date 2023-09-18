@@ -16,4 +16,4 @@ pamus -S (--sync) -> to sync (download)
 pamus -T (--tag) -> to tag downloaded files  
 
 ### Known bugs
-  Seems to not work properly when there are foregn letters in the video title.
+  Seems to not work properly when there are non-latin letters in the video title.
