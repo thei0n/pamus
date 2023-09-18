@@ -1,0 +1,58 @@
+#!/bin/sh
+
+downloadMus()
+{
+  mkdir -p ~/Music
+  cd ~/Music
+  file=~/.config/music.txt || exit 1
+  line=1
+  for i in $(sed "s/\s*#.*//g; /^$/ d" $file | awk '{print $1}');do
+  
+    if [ $(($line%6)) = 0 ];then
+      ls *$i* && echo $i is already downloaded  || yt-dlp -x --audio-format mp3 $i
+    else
+      ls *$i* && echo $i is already downloaded || yt-dlp -x --audio-format mp3 $i &
+    fi
+  
+    echo "$i is downloaded"
+  
+  (( line ++))
+  
+  done
+}
+
+nameMus()
+{
+ cd downloaded
+     for i in $(sed "s/\s*#.*//g; /^$/ d" ~/proj/DMv2/list.txt | awk '{print $1}');do
+       mv *$i* "$i" > /dev/null 2>&1
+     done
+
+for i in $(ls)
+do
+   name=$(grep $i* ~/proj/DMv2/list.txt | awk '{print $2}')
+   genre=$(grep $i* ~/proj/DMv2/list.txt | awk '{print $3}')
+   artist=$(grep $i* ~/proj/DMv2/list.txt | awk '{print $4}')
+   album=$(grep $i* ~/proj/DMv2/list.txt | awk '{print $5}')
+   id3 -t "$name" -a "$artist" -l "$album" -g "$genre" $i && echo $i $name tagged || echo could not tag
+
+done 
+
+for i in $(sed "s/\s*#.*//g; /^$/ d" ~/proj/DMv2/list.txt | awk '{print $1}');do
+  name=$(grep $i* ~/proj/DMv2/list.txt | awk '{print $2}')
+  mv *$i* "$name$i.mp3" > /dev/null 2>&1
+done
+}
+
+if [ $@ ]
+then
+
+  [ $@ = '-S' ] || [ $@ = '--sync' ] && downloadMus
+  [ $@ = '-T' ] || [ $@ = '--tag' ] && nameMus
+
+else
+
+  echo "Usage:
+   -S or --sync -> Download music files
+   -T or --tag -> Tag downloaded music files"
+fi
