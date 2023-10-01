@@ -12,8 +12,13 @@ music files simultaneously and when the 5th is finished it downloads the next 5.
 Tag part of the script tags the downloaded file which include their id numbers.
 
 ## Usage
-* pamus -S (--sync) -> to sync (download) 
-* pamus -T (--tag) -> to tag downloaded files  
+* pamus -S or --sync -> to sync (download) 
+* pamus -T or --tag -> to tag downloaded files  
 
 ### Known bugs
   Seems to not work properly when there are non-latin letters in the video title.
+
+### to add 
+* pamus -Su -> download 
+* pamus -Sy -> tag
+* pamus -Syu -> download and tag
