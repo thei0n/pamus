@@ -18,7 +18,13 @@ Tag part of the script tags the downloaded file which include their id numbers.
 ### Known bugs
   Seems to not work properly when there are non-latin letters in the video title.
 
-### to add 
-* pamus -S -> Sync
-* pamus -T -> tag
-* pamus -St -> download and tag
+<!-- ### to add  -->
+<!-- * pamus -S -> Sync -->
+<!-- * pamus -T -> tag -->
+<!-- * pamus -St -> download and tag -->
+
+## OS compatibility
+* Designed for GNU/Linux
+* Might work on BSD 
+* Doesn't work on windows
+
