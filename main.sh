@@ -5,14 +5,14 @@ source ~/.config/pamus/functions/functions.sh
 sourceFile=~/.config/pamus/music.txt
 downloadDir=~/Music
 
+
+if  [ $@ = '-S' ] || [ $@ = '--sync' ]
 then
+	 downloadMus $sourceFile $downloadDir
 
-  [ $@ = '-S' ] || [ $@ = '--sync' ] && downloadMus $sourceFile $downloadDir
-  [ $@ = '-T' ] || [ $@ = '--tag' ] && nameMus $sourceFile $downloadDir
-
+if [ $@ = '-T' ] || [ $@ = '--tag' ]
+then
+   nameMus $sourceFile $downloadDir
 else
-
-  echo "Usage:
-   -S or --sync -> Download music files
-   -T or --tag -> Tag downloaded music files"
+	echo bad usage
 fi

@@ -4,9 +4,9 @@ mkdir -p ~/.config/pamus
 mkdir -p ~/.config/pamus/functions
 
 cp ./functions.sh ~/.config/pamus/functions/functions.sh
-sudo cp install.sh /usr/local/bin/pamus
+sudo cp main.sh /usr/local/bin/pamus
 
-if -z [ ~/.config/pamus/music.txt ]
+if [ -z ~/.config/pamus/music.txt ]
 then
 	touch ~/.config/pamus/music.txt  
 	echo 'M5YXXU0rKjc Happy_Nation Pop Ace_of_Base Happy_Nation' >> ~/.config/pamus/music.txt
